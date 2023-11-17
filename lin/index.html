@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hoyoverse</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f8f8f8;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        #Hoyoverse {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        #confirmButton {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            background-color: #4ca8af;
+            color: white;
+            border:2px solid #000000;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #confirmButton:hover {
+            background-color: #457da0;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Do you like Hoyoverse?</h2>
+
+<select id="Hoyoverse">
+    <option value="yes">Yes</option> 
+    <option value="absolutelyYes">Absolutely Yes</option>
+    <option value="certainlyYes">Certainly Yes</option>
+</select> </body> </br>
+
+<button id="confirmButton">Confirm Answer</button>
+
+<script>
+    $(document).ready(function () {
+        $("#confirmButton").on("click", function () {
+            const selectedValue = $("#Hoyoverse").val();
+            confirmAnswer(selectedValue);
+        });
+
+        function confirmAnswer(selectedValue) {
+            const confirmation = prompt("Are you sure about your answer? Type 'yes' to confirm.");
+
+            if (confirmation && confirmation.toLowerCase() === "yes") {
+                Hoyoverse(selectedValue);
+            } else {
+                alert("Confirmation failed. Please confirm your answer again.");
+            }
+        }
+
+        function Hoyoverse(selectedValue) {
+            $("#Hoyoverse option.surprise").remove();
+
+    
+            if (selectedValue === "yes" || selectedValue === "absolutelyYes" || selectedValue === "certainlyYes") {
+                $("#Hoyoverse").append("<option class='surprise' value='no'>No</option>");
+
+    
+                alert("Check the option again! I think you might need to go back to elementary school.");
+            }
+        }
+    });
+</script>
+
+</body>
+
+</html>
